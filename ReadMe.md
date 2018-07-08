@@ -1,0 +1,7 @@
+# Node BlueSnap Encrypt
+
+Encrypt a credit card number and security code programatically, per [Bluesnap's directions for client side encryption](https://developers.bluesnap.com/docs/client-side-encryption#section-using-encrypted-data-to-process-payments-via-the-bluesnap-apis) for the sake of easy testing.
+
+- `doc.html` -- Raw webpage w/ form to show actual implementation of client-side encryption in a browser.  To use, copy the "Client Side Encryption Key" from your API Settings page in the BlueSnap console to the line `var bluesnap = new BlueSnap("__CLIENT SIDE ENCRYPTION KEY HERE___");`; open the page in your web browser of choice; enter a card and CVV into the form; click the `Submit` button; finally, check your JS console for the encrypted output.
+
+- `index.js` -- Use [JSDOM](https://github.com/jsdom/jsdom) to accomplish the same.  To use, copy the "Client Side Encryption Key" from your API Settings page in the BlueSnap console to the line `var bluesnap = new BlueSnap("__CLIENT SIDE ENCRYPTION KEY HERE___")`; change the lines `<input type="text" placeholder="Enter Card" name="creditCard" id="creditCard" data-bluesnap="encryptedCreditCard" value="1234">` and `<input type="text" placeholder="Enter CVV" name="cvv" id="cvv" data-bluesnap="encryptedCvv" value="1234">` to include a new credit card number and CVV; run the script to see the encrypted results.
