@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://gateway.bluesnap.com/js/cse/v1.0.3/bluesnap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form id="checkout-form">
+        <div>
+            <label for="creditCard">Card</label>
+            <input type="text" placeholder="Enter Card" name="creditCard" id="creditCard" data-bluesnap="encryptedCreditCard" value="1234">
+        </div>
+        <div>
+            <label for="cvv">CVV</label>
+            <input type="text" placeholder="Enter CVV" name="cvv" id="cvv" data-bluesnap="encryptedCvv" value="1234">
+        </div>
+        <input type="submit" id="submit-button">
+    </form>
+
+    <script>
+
+        var bluesnap = new BlueSnap("__CLIENT SIDE ENCRYPTION KEY HERE___");
+
+        document.getElementById("submit-button").addEventListener("click", function () {
+            bluesnap.encrypt("checkout-form");
+        });
+
+        $("#checkout-form").on("submit", function (event) {
+            event.preventDefault();
+            console.log($(this).serializeArray());
+
+        });
+
+        onModulesLoaded(window)
+
+    </script>
+
+</body>
+</html>
