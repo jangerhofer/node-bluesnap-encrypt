@@ -29,7 +29,11 @@
 
         $("#checkout-form").on("submit", function (event) {
             event.preventDefault();
-            console.log($(this).serializeArray());
+            $(this).serializeArray().map(({name, value}) => {
+                console.log(name)
+                console.log(value)
+                console.log()
+            })
 
         });
 
